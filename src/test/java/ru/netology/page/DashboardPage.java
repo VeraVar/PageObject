@@ -16,8 +16,12 @@ public class DashboardPage {
     private final String balanceFinish = " р.";
     private ElementsCollection depositButton = $$("[data-test-id='action-deposit']");
 
-    public DashboardPage() {
+    public void pageVisible(){
         dashboardField.shouldHave(Condition.visible, text("Личный кабинет"));
+    }
+
+    public DashboardPage() {
+        pageVisible();
     }
 
     public int getCardBalance(String id) {
@@ -48,10 +52,5 @@ public class DashboardPage {
     public TransferPage secondCardDepositClick() {
         depositButton.last().click();
         return new TransferPage();
-    }
-
-    public String returnDashboardPage() {
-        val text = $("[data-test-id='dashboard']").text();
-        return text;
     }
 }
